@@ -15,7 +15,7 @@
 #' @importFrom dplyr left_join
 #' @importFrom deconstructSigs mut.to.sigs.input
 #' @importFrom BSgenome.Hsapiens.UCSC.hg19 BSgenome.Hsapiens.UCSC.hg19
-#' @importFrom BSgenome.Hsapiens.UCSC.hg38 BSgenome.Hsapiens.UCSC.hg38
+#' @import BSgenome.Hsapiens.UCSC.hg38
 #'
 #' @return mutational signature fitting results for all samples
 #' @export

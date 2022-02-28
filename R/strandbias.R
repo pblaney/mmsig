@@ -15,8 +15,8 @@
 #' @importFrom TxDb.Hsapiens.UCSC.hg38.knownGene TxDb.Hsapiens.UCSC.hg38.knownGene
 #' @importFrom GenomicRanges GRanges
 #' @importFrom IRanges IRanges
-#' @import BSgenome.Hsapiens.UCSC.hg19
-#' @import BSgenome.Hsapiens.UCSC.hg38
+#' @importFrom BSgenome.Hsapiens.UCSC.hg19 BSgenome.Hsapiens.UCSC.hg19
+#' @importFrom BSgenome.Hsapiens.UCSC.hg38 BSgenome.Hsapiens.UCSC.hg38
 #'
 
 getStrandBias <- function(data_5cols){

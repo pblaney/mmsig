@@ -14,8 +14,8 @@
 #' @param dbg FALSE = silent; TRUE = verbose
 #' @importFrom dplyr left_join
 #' @importFrom deconstructSigs mut.to.sigs.input
-#' @import BSgenome.Hsapiens.UCSC.hg19
-#' @import BSgenome.Hsapiens.UCSC.hg38
+#' @importFrom BSgenome.Hsapiens.UCSC.hg19 BSgenome.Hsapiens.UCSC.hg19
+#' @importFrom BSgenome.Hsapiens.UCSC.hg38 BSgenome.Hsapiens.UCSC.hg38
 #'
 #' @return mutational signature fitting results for all samples
 #' @export
@@ -50,7 +50,7 @@ mm_fit_signatures = function(muts.input,
 
   } else if(genome == "hg38") {
     ref_genome<- BSgenome.Hsapiens.UCSC.hg38
-    
+
   } else {
     stop("ERROR: Reference genome string does not match available options: hg19 or hg38")
   }

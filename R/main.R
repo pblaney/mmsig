@@ -48,7 +48,7 @@ mm_fit_signatures = function(muts.input,
   if(genome == "hg19") {
     ref_genome <- BSgenome.Hsapiens.UCSC.hg19
 
-  } else if(genom == "hg38") {
+  } else if(genome == "hg38") {
     ref_genome<- BSgenome.Hsapiens.UCSC.hg38
     
   } else {

@@ -7,7 +7,8 @@
 #' @param bootstrap TRUE/FALSE for whether bootstrapping is to be performed
 #' @param iterations number of bootstrapping iterations to perform (only if bootstrap == TRUE)
 #' @param strandbias TRUE/FALSE for whether transcriptional strand bias should be tested for (only for vcf-like input format)
-#' @param refcheck check that input mutational catalog (if vcf-format) is aligned to hg19
+#' @param genome string defining which reference genome was used: hg19 or hg38
+#' @param refcheck check that input mutational catalog (if vcf-format) is aligned to reference genome defined above
 #' @param cos_sim_threshold cosine similarity threshold below which signatures are removed from the final profile
 #' @param force_include vector with the names of signatures to always keep in the final profile of every sample
 #' @param dbg FALSE = silent; TRUE = verbose
@@ -26,6 +27,7 @@ mm_fit_signatures = function(muts.input,
                              bootstrap=FALSE,
                              iterations=1000,
                              strandbias=FALSE,
+                             genome="hg19",
                              refcheck=TRUE,
                              cos_sim_threshold=0.01,
                              force_include=c("SBS1", "SBS5"),
@@ -43,6 +45,16 @@ mm_fit_signatures = function(muts.input,
   # Mutational signature reference
   consigts.defn <- sig.input
 
+  if(genome == "hg19") {
+    ref_genome <- BSgenome.Hsapiens.UCSC.hg19
+
+  } else if(genom == "hg38") {
+    ref_genome<- BSgenome.Hsapiens.UCSC.hg38
+    
+  } else {
+    stop("ERROR: Reference genome string does not match available options: hg19 or hg38")
+  }
+
   # Input mutation data
   if(input.format == "vcf") {
 
@@ -57,8 +69,8 @@ mm_fit_signatures = function(muts.input,
     }
 
     if(refcheck){
-      if(!refCheck(muts.input, BSgenome.Hsapiens.UCSC.hg19)){
-        stop("ERROR: Wrong reference genome, please provide mutational data aligned to hg19/GRCh37")
+      if(!refCheck(muts.input, ref_genome)){
+        stop("ERROR: Wrong reference genome, please provide mutational data aligned to the reference genome defined by user or change reference")
       }
     }
 
@@ -69,7 +81,7 @@ mm_fit_signatures = function(muts.input,
                                       pos = "pos",
                                       ref = "ref",
                                       alt = "alt",
-                                      bsg = BSgenome.Hsapiens.UCSC.hg19)
+                                      bsg = ref_genome)
 
     samples.muts <- as.data.frame(t(samples.muts))
 

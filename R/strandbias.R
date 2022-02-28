@@ -41,11 +41,20 @@ getStrandBias <- function(data_5cols, genome_string){
   names(sample_list) <- samples
 
   # transcriptional strand annotation
-  genes_hg19 <- suppressMessages(GenomicFeatures::genes(TxDb.Hsapiens.UCSC.hg19.knownGene))
+  if(genome_string == "hg19") {
+
+    genome <- "BSgenome.Hsapiens.UCSC.hg19"
+    genes <- suppressMessages(GenomicFeatures::genes(TxDb.Hsapiens.UCSC.hg19.knownGene))
+
+  } else {
+
+    genome <- "BSgenome.Hsapiens.UCSC.hg38"
+    genes <- suppressMessages(GenomicFeatures::genes(TxDb.Hsapiens.UCSC.hg38.knownGene))
+  }
 
   mut_mat_stranded <- MutationalPatterns::mut_matrix_stranded(vcf_list = sample_list,
-                                                              ref_genome = "BSgenome.Hsapiens.UCSC.hg19",
-                                                              ranges = genes_hg19,
+                                                              ref_genome = genome,
+                                                              ranges = genes,
                                                               mode = "transcription")
 
   mut_df_stranded <- as.data.frame(mut_mat_stranded) %>%

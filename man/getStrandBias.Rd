@@ -4,10 +4,12 @@
 \alias{getStrandBias}
 \title{Statistical tests for transcriptional strand bias}
 \usage{
-getStrandBias(data_5cols)
+getStrandBias(data_5cols, genome_string)
 }
 \arguments{
 \item{data_5cols}{input mutational catalog in 5-column format}
+
+\item{genome_string}{string defining which reference genome was used: hg19 or hg38}
 }
 \value{
 list of results from strand bias in each trinucleotide context and pooled analysis for SBS-MM1 and SBS35

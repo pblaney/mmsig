@@ -23,15 +23,15 @@
 mm_fit_signatures = function(muts.input,
                              sig.input,
                              input.format = "vcf",
-                             sample.sigt.profs=NULL,
-                             bootstrap=FALSE,
-                             iterations=1000,
-                             strandbias=FALSE,
-                             genome="hg19",
-                             refcheck=TRUE,
-                             cos_sim_threshold=0.01,
-                             force_include=c("SBS1", "SBS5"),
-                             dbg=FALSE) {
+                             sample.sigt.profs = NULL,
+                             bootstrap = FALSE,
+                             iterations = 1000,
+                             strandbias = FALSE,
+                             genome = "hg38",
+                             refcheck = TRUE,
+                             cos_sim_threshold = 0.01,
+                             force_include = c("SBS1", "SBS5"),
+                             dbg = FALSE) {
   "
 
     "

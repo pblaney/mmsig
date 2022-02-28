@@ -12,6 +12,7 @@ mm_fit_signatures(
   bootstrap = FALSE,
   iterations = 1000,
   strandbias = FALSE,
+  genome = "hg38",
   refcheck = TRUE,
   cos_sim_threshold = 0.01,
   force_include = c("SBS1", "SBS5"),
@@ -33,7 +34,9 @@ mm_fit_signatures(
 
 \item{strandbias}{TRUE/FALSE for whether transcriptional strand bias should be tested for (only for vcf-like input format)}
 
-\item{refcheck}{check that input mutational catalog (if vcf-format) is aligned to hg19}
+\item{genome}{string defining which reference genome was used: hg19 or hg38}
+
+\item{refcheck}{check that input mutational catalog (if vcf-format) is aligned to reference genome defined above}
 
 \item{cos_sim_threshold}{cosine similarity threshold below which signatures are removed from the final profile}
 

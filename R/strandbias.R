@@ -1,6 +1,7 @@
 #' Statistical tests for transcriptional strand bias
 #'
 #' @param data_5cols input mutational catalog in 5-column format
+#' @param genome_string string defining which reference genome was used: hg19 or hg38
 #' @return list of results from strand bias in each trinucleotide context and pooled analysis for SBS-MM1 and SBS35
 #' @importFrom dplyr %>%
 #' @importFrom tibble rownames_to_column
@@ -19,7 +20,7 @@
 #' @import BSgenome.Hsapiens.UCSC.hg38
 #'
 
-getStrandBias <- function(data_5cols){
+getStrandBias <- function(data_5cols, genome_string){
 
   # Generate GRange list from data in vcf-like format
   sample_list <- list()
@@ -32,7 +33,7 @@ getStrandBias <- function(data_5cols){
                             IRanges(start=pos, end=pos),
                             REF= ref,
                             ALT=alt))
-    genome(temp_gr) <- "hg19"
+    genome(temp_gr) <- genome_string
 
     sample_list[[i]]<- (temp_gr)
   }

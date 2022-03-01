@@ -14,8 +14,8 @@
 #' @param dbg FALSE = silent; TRUE = verbose
 #' @importFrom dplyr left_join
 #' @importFrom deconstructSigs mut.to.sigs.input
-#' @importFrom BSgenome.Hsapiens.UCSC.hg19 BSgenome.Hsapiens.UCSC.hg19
-#' @import BSgenome.Hsapiens.UCSC.hg38
+#' @importFrom BSgenome.Hsapiens.UCSC.hg38 BSgenome.Hsapiens.UCSC.hg38
+#' @import BSgenome.Hsapiens.UCSC.hg19
 #'
 #' @return mutational signature fitting results for all samples
 #' @export
@@ -27,7 +27,7 @@ mm_fit_signatures = function(muts.input,
                              bootstrap = FALSE,
                              iterations = 1000,
                              strandbias = FALSE,
-                             genome = "hg38",
+                             genome = "hg19",
                              refcheck = TRUE,
                              cos_sim_threshold = 0.01,
                              force_include = c("SBS1", "SBS5"),

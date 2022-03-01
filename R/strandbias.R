@@ -16,8 +16,8 @@
 #' @importFrom TxDb.Hsapiens.UCSC.hg38.knownGene TxDb.Hsapiens.UCSC.hg38.knownGene
 #' @importFrom GenomicRanges GRanges
 #' @importFrom IRanges IRanges
-#' @importFrom BSgenome.Hsapiens.UCSC.hg19 BSgenome.Hsapiens.UCSC.hg19
-#' @import BSgenome.Hsapiens.UCSC.hg38
+#' @importFrom BSgenome.Hsapiens.UCSC.hg38 BSgenome.Hsapiens.UCSC.hg38
+#' @import BSgenome.Hsapiens.UCSC.hg19
 #'
 
 getStrandBias <- function(data_5cols, genome_string){
@@ -46,10 +46,14 @@ getStrandBias <- function(data_5cols, genome_string){
     genome <- "BSgenome.Hsapiens.UCSC.hg19"
     genes <- suppressMessages(GenomicFeatures::genes(TxDb.Hsapiens.UCSC.hg19.knownGene))
 
-  } else {
+  } else if(genome_string == "hg38") {
 
     genome <- "BSgenome.Hsapiens.UCSC.hg38"
     genes <- suppressMessages(GenomicFeatures::genes(TxDb.Hsapiens.UCSC.hg38.knownGene))
+    
+  } else {
+
+    stop("ERROR: Reference genome string does not match available options: hg19 or hg38")
   }
 
   mut_mat_stranded <- MutationalPatterns::mut_matrix_stranded(vcf_list = sample_list,

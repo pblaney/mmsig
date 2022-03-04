@@ -37,7 +37,7 @@ You can install the development version with:
 
 ``` r
 # install.packages("devtools")
-devtools::install_github(repo = "pblaney/mmsig", ref = "dev_hg38")
+devtools::install_github(repo = "pblaney/mmsig")
 
 library(mmsig)
 ```
